@@ -1,7 +1,7 @@
-path = "test.png"
+path = "test.png" #이미지 경로 입력
 
 try:
-    with open("test.png","rb") as file:
+    with open(path,"rb") as file:
         binary_data = file.read()
         print(binary_data)
 except:
