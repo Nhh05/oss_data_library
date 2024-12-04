@@ -53,7 +53,28 @@ for type, data in chunks:
         height = decode_4(data[4:8])
         color_type = data[9] #색상 구성 정보 담고있음 (0: 그레이스케일, 2: RGB, 6: RGBA)
         print(f"Width: {width}, Height: {height}, Color Type: {color_type}")
-    elif type == "IDAT": #IDAT 청크에서의 데이터
+    elif type == "IDAT": # 여러개의 IDAT 청크 데이터 합치기
         image_data += data
 
 print("IMAGE_DATA: ", image_data)
+
+# PNG 파일을 해석할 수 있는지 미리 확인하기
+if color_type !=0: #color_type 0 만 구현된 상태이기 때문에 제한.
+    print(f"PNG '{path}' 파일에서 문제가 발생했습니다.")
+    print("그레이스케일(0)번 이외의 png 형식은 아직 구현되지 않았습니다.")
+    print("버전 업데이트를 기다려주세요!")
+    exit()
+if image_data==b"":
+    print(f"PNG '{path}'IDAT 청크를 발견하지 못했습니다.")
+    exit()
+
+
+import zlib
+
+try:
+    decompressed_data = zlib.decompress(image_data)
+except:
+    print("<zlib> Failed decompressed IDAT data.")
+    exit()
+
+print(decompressed_data)
