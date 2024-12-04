@@ -77,4 +77,29 @@ except:
     print("<zlib> Failed decompressed IDAT data.")
     exit()
 
-print(decompressed_data)
+print()
+print("decompressed_data: ",decompressed_data)
+print("LENGTH of decoded PNG:",len(decompressed_data))
+
+row_size = width+1 # +1은 항상 모든 행 앞의 filter_type (1byte)
+
+#zilb 으로 푼 바이너리를 픽셀 형태로 풀기.
+pixels = []
+for y in range(height):
+    row = []
+    for x in range(width): 
+        location = y*row_size + x + 1 #픽셀로 바꿀 위치 계산
+        row.append(decompressed_data[location])
+    pixels.append(row) #행을 데이터에 추가
+
+#사이즈 유지하면서 프린트
+print("RESULT :")
+for y in pixels:
+    for x in y:
+        if x<10:
+            print("  ",x,end=" ")
+        elif x<100:
+            print(" ",x,end=" ")
+        else:
+            print("",x,end=" ")
+    print()
