@@ -3,6 +3,11 @@ import random
 from shutil import copy2
 
 def split_image(source_dir, train_dir, test_dir, train_ratio=0.7):
+    
+    for dir_path in [train_dir, test_dir]:
+        if os.path.exists(dir_path):
+            rmtree(dir_path)
+        os.makedirs(dir_path,exist_ok=True)
 
     all_files = []
     for f in os.listdir(source_dir):
