@@ -4,7 +4,7 @@ def scale_data(data): #매서드화
     data_max = max(data) #최댓값
    
     if data_min == data_max:  #최대와 최소가 같을 경우 예외 처리
-        return[1/data_min] * len(data)
+        return[0.5] * len(data)
     
     else:
         scaled_data = []     #스케일링 된 수를 넣는 리스트
