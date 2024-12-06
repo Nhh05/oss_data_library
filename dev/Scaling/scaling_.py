@@ -13,5 +13,5 @@ def scale_data(data): #매서드화
             scaled_value = (k - data_min) / (data_max - data_min) 
             scaled_data.append(scaled_value) 
 
-        return sorted(scaled_data)
+        return scaled_data
 
