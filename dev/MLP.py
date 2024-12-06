@@ -61,7 +61,7 @@ class MLPForMINIST:
         db2 = np.sum(dZ2, axis=0, keepdims=True) / m
         #
         dA1 = np.dot(dZ2, self.W2.T)
-        dZ1 = dA1 * self.sigmoid_derivative(self.A1)
+        dZ1 = dA1 * self.relu_derivative(self.A1)
         dW1 = np.dot(X.T, dZ1) / m
         db1 = np.sum(dZ1, axis=0, keepdims=True) / m
         #기울기 변경
