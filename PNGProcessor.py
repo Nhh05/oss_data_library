@@ -15,7 +15,7 @@ class PNGProcessor:
             return
             
         signature = raw_data[:8]
-        print("signature: ",signature)
+        #print("signature: ",signature)
         raw_data = raw_data[8:]
         if signature!=b'\x89PNG\r\n\x1a\n':
             print("not a valid PNG file.")
@@ -39,8 +39,8 @@ class PNGProcessor:
 
             raw_data = raw_data[12+data_length:]
 
-        for type, data in chunks:
-            print("data_type  : ",type,"/ data_length: ",len(data))
+        #for type, data in chunks:
+        #    print("data_type  : ",type,"/ data_length: ",len(data))
 
         image_data = b""
         for type, data in chunks:
@@ -48,7 +48,7 @@ class PNGProcessor:
                 width = decode_4(data[0:4])
                 height = decode_4(data[4:8])
                 color_type = data[9]
-                print(f"Width: {width}, Height: {height}, Color Type: {color_type}")
+                #print(f"Width: {width}, Height: {height}, Color Type: {color_type}")
             elif type == "IDAT":
                 image_data += data
 
@@ -67,7 +67,7 @@ class PNGProcessor:
             print("<zlib> Failed decompressed IDAT data.")
             return
 
-        print("LENGTH of decoded PNG:",len(decompressed_data))
+        #print("LENGTH of decoded PNG:",len(decompressed_data))
 
         row_size = width+1
 
