@@ -136,7 +136,6 @@ class DataPreprocessor:
         for label in labels:
             vector = [0] * num_classes
             vector[label] = 1
-            one_hot.append(vector)
         return one_hot
     
     def scale_data(self,data): #매서드화
