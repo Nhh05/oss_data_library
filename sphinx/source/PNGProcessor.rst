@@ -6,7 +6,7 @@ This module provides utilities for processing PNG images.
 Classes:
 --------
 
-.. autoclass:: PNGProcessor.PNGProcessor
+.. autoclass:: oss_png_transfer.PNGProcessor.PNGProcessor
    :members:
    :undoc-members:
    :show-inheritance:

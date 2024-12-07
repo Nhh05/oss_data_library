@@ -6,7 +6,7 @@ This module contains utilities for preprocessing and transforming datasets.
 Classes:
 --------
 
-.. autoclass:: DataPreProcessor.DataPreProcessor
+.. autoclass:: oss_png_transfer.DataPreProcessor.DataPreProcessor
    :members:
    :undoc-members:
    :show-inheritance:

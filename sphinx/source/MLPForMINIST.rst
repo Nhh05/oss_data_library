@@ -6,7 +6,7 @@ This module implements a simple multi-layer perceptron (MLP) for the MNIST datas
 Classes:
 --------
 
-.. autoclass:: MLPForMINIST.MLPForMINIST
+.. autoclass:: oss_png_transfer.MLPForMINIST.MLPForMINIST
    :members:
    :undoc-members:
    :show-inheritance:
