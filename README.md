@@ -1,12 +1,33 @@
-MNIST 데이터셋을 학습시킬 때, 원핫인코딩(One-Hot Encoding)은 레이블(정답 값)을 모델이 이해할 수 있는 형식으로 변환하기 위해 사용됨
+## oss_png_transfer 라이브러리
 
+`oss_png_transfer` : MINIST 데이터셋을 기반으로 PNG 파일 읽기(only grayscale), 데이터 전처리, 간단한 MLP 모델 학습을 해볼 수 있는 Python 라이브러리 입니다.
 
-원핫인코딩이 사용되는 이유
+### 기능
+1. **PNGProcessor.py**:
+   - PNG 파일의 데이터 여는 기능.
+   - 흑백(그레이스케일) 이미지 색상 반전.
+   - (JPG는 추후 업데이트 예정)
 
-문제점 1: 정수형 레이블은 "순서"를 암시
-정수형 레이블(5)은 모델이 5 > 4 또는 5와 4의 거리가 1이라는 순서 또는 관계를 가정하게 할 수 있습니다.
-그러나 MNIST 레이블은 이러한 순서나 거리 개념이 없습니다. (예: 5와 4는 전혀 관련 없는 독립적인 숫자)
+2. **DataPreProcessor.py**:
+    - 데이터 섞기, train, test 데이터 분리
+        - 섞는 과정에서 시드 값(seed = 42)를 설정하면 ?
+        - 기본 train, test 분할 비율은 7:3 이고, 개별 정의 가능합니다.
 
-문제점 2: 손실 함수에서 부적합
-분류 문제에서는 Categorical Cross-Entropy 또는 Sparse Categorical Cross-Entropy 같은 손실 함수를 사용하는데, 정수형 레이블은 Sparse Categorical Cross-Entropy에서만 적합합니다.
-원핫인코딩을 사용하면 Categorical Cross-Entropy 손실 함수를 사용할 수 있고, 이는 모델이 확률 출력을 학습하도록 유도합니다.
+    - OneHot 인코딩
+        - 숫자형 라벨(예: 0, 1, 2)을 One-hot 벡터 형식으로 변환한다.
+        - ex) [0, 1, 2] → [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+        
+    - 데이터 정규화
+        - 데이터 최소값과 최댓값 기준으로 0~1범위로 정규화한다.
+        - 모든 값이 동일할 경우, 예외처리로 모든 데이터가 0.5로 설정된다.
+
+3. **MLPForMINIST.py**:
+   - 입력층, 은닉층, 출력층의 노드 개수 설정.
+   - 은닉층은 한겹으로 고정
+   - 반복횟수(epoch = 1000), 학습률(learning_rate = 0.1) 설정가능
+   - 모델 파라미터 저장/불러오기 지원.
+   -> 학습시킨 이후 모델을 저장하고, 파라미터를 불러와서 model.forward()로 이미지 예측할 수 있음
+
+## 설치
+```bash
+pip install oss_png_transfer
