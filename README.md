@@ -30,4 +30,4 @@
 
 ## 설치
 ```bash
-pip install oss_png_transfer
+pip install oss-png-transfer
