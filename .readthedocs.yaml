@@ -10,5 +10,5 @@ python:
 
 # Sphinx 설정
 sphinx:
-  configuration: docs/source/conf.py  # Sphinx 설정 파일 경로
+  configuration: sphinx/source/conf.py  # Sphinx 설정 파일 경로
 
