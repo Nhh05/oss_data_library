@@ -9,9 +9,7 @@ build:
 # Python 설정
 python:
   install:
-    - method: pip
-      path: .
-      requirements: requirements.txt
+    - requirements: requirements.txt
 
 # Sphinx 설정
 sphinx:
