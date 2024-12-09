@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oss_data_library"
+version = "0.1.0"
+description = "A Python library for processing MINIST dataset and training simple MLP models."
+readme = "README.rst"
+authors = [
+    { name = "Nhh05", email = "example@example.com" }
+]
+license = { file = "LICENSE" }
+keywords = ["MINIST", "MLP", "Python", "data processing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "pandas>=1.3.0",
+    "scikit-learn>=0.24.0",
+    "matplotlib>=3.4.0",
+    "sphinx>=4.0.0",
+    "sphinx-rtd-theme>=1.0.0"
+]
+
+[tool.sphinx]
+
