@@ -1,17 +1,21 @@
 version: 2
 
+# Python 설정
 python:
-  version: 3.8
+  interpreters:
+    - "3.8"  # 사용하려는 Python 버전을 정확히 지정하세요
   install:
     - method: pip
       path: .
       requirements: requirements.txt
 
+# Sphinx 설정
 sphinx:
-  configuration: sphinx/source/conf.py
+  configuration: docs/source/conf.py  # Sphinx 설정 파일 경로
 
+# 빌드 설정
 build:
   os: ubuntu-20.04
   tools:
-    python: "3.8"
+    python: "3.8"  # Python 버전을 다시 명시적으로 지정
 
